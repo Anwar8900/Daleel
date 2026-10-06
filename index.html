@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("daqiq-theme");
+        if (!t) {
+          t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>دليل القاصد | دليل الزيارة والسلام على النبي ﷺ والصلاة في الروضة الشريفة</title>
+  <meta name="description" content="دليل علمي وعملي متكامل للقاصد إلى المسجد النبوي: من دخول المسجد، إلى السلام على رسول الله ﷺ وصاحبيه، ثم الصلاة والذكر والدعاء في الروضة الشريفة." />
+  <meta name="author" content="دليل القاصد" />
+  <meta property="og:title" content="دليل القاصد" />
+  <meta property="og:description" content="دليل الزيارة والسلام على النبي ﷺ والصلاة في الروضة الشريفة." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/hero-exterior.jpg" />
+  <meta property="og:locale" content="ar_SA" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="assets/img/gate-door.jpg" />
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="دليل القاصد — الصفحة الرئيسية">
+        <span>
+          <span class="brand-name">دليل القاصد</span>
+          <span class="brand-sub">للسلام على النبي ﷺ والصلاة في الروضة</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="التنقّل الرئيسي">
+        <ul>
+          <li><a href="index.html" aria-current="page">الرئيسية</a></li>
+          <li><a href="visit-mosque.html">زيارة المسجد النبوي</a></li>
+          <li><a href="greeting.html">السلام على النبي ﷺ</a></li>
+          <li><a href="rawdah.html">الصلاة في الروضة</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="toggle-btn theme-toggle" data-theme-toggle aria-pressed="false" aria-label="تبديل الوضع الليلي والنهاري">
+          <span class="label-day">نهاري / ليلي</span>
+          <span class="label-night">ليلي / نهاري</span>
+        </button>
+        <button class="toggle-btn menu-btn" data-menu-toggle aria-expanded="false" aria-controls="main-nav" aria-label="فتح قائمة التنقّل">
+          <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>القائمة</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ الهيرو ============ -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="assets/img/hero-exterior.jpg" alt="ساحة المسجد النبوي الشريف وقت الغروب مع القبة الخضراء والمآذن" fetchpriority="high" data-fade />
+      </div>
+      <div class="hero__inner reveal">
+        <span class="hero__eyebrow">دليل علمي وعملي متكامل للقاصد</span>
+        <h1>دليل القاصد</h1>
+        <p class="hero__subtitle">من دخول المسجد النبوي، إلى السلام على رسول الله ﷺ وصاحبيه، ثم الصلاة والذكر والدعاء في الروضة الشريفة.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="visit-mosque.html">ابدأ الدليل</a>
+          <a class="btn btn--ghost" href="#sections">تصفّح الأقسام</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ الأقسام الثلاثة ============ -->
+    <section class="section-pad tiles-section" id="sections" aria-labelledby="sections-title">
+      <div class="container">
+        <div class="tiles-head reveal">
+          <h2 id="sections-title">أقسام الدليل</h2>
+          <p>ثلاثة أقسام تنظّم رحلتك إلى المسجد النبوي: الزيارة والصلاة، ثم السلام على النبي ﷺ، ثم الصلاة في الروضة الشريفة.</p>
+        </div>
+
+        <div class="tiles">
+          <a class="tile reveal" href="visit-mosque.html">
+            <img class="tile__img" src="assets/img/mosque-interior.jpg" alt="الرواق الداخلي للمسجد النبوي بسجاد أخضر وزخارف إسلامية" loading="lazy" data-fade />
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__label">
+              <span class="tile__index">القسم الأول</span>
+              <h2>زيارة المسجد النبوي والصلاة فيه</h2>
+            </span>
+          </a>
+
+          <a class="tile reveal" href="greeting.html">
+            <img class="tile__img" src="assets/img/prophet-chamber.jpg" alt="شبّاك الحجرة الشريفة واللوحات الخضراء المذهبة في المسجد النبوي" loading="lazy" data-fade />
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__label">
+              <span class="tile__index">القسم الثاني</span>
+              <h2>السلام على النبي ﷺ</h2>
+            </span>
+          </a>
+
+          <a class="tile reveal" href="rawdah.html">
+            <img class="tile__img" src="assets/img/gate-door.jpg" alt="أبواب المسجد النبوي المذهبة والمقرنصات عند مدخل الحرم" loading="lazy" data-fade />
+            <span class="tile__overlay" aria-hidden="true"></span>
+            <span class="tile__label">
+              <span class="tile__index">القسم الثالث</span>
+              <h2>الصلاة في الروضة الشريفة</h2>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ نبذة ============ -->
+    <section class="section-pad about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="tiles-head reveal">
+          <h2 id="about-title">قبَل أن تنطلق</h2>
+          <p>هذا الدليل لا يهدف إلى تحميل الزائر عددًا كبيرًا من الأدعية أو الإجراءات، وإنما إلى مساعدته على أن يؤدي الزيارة بهدوء، وخشوع، واتباع للسنة، مع احترام حرمة المكان وحقوق بقية القاصدين.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <h3>الأصل المقصود</h3>
+            <p>عبادة الله تعالى، والصلاة في المسجد النبوي، والصلاة والسلام على رسول الله ﷺ، ثم اغتنام ما تيسر من الصلاة والذكر والدعاء في الروضة دون مزاحمة أو أذى.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>القاعدة العملية المختصرة</h3>
+            <p>دخول بأدب ← تحية المسجد ← الروضة إن تيسرت ← الصلاة والذكر والدعاء ← التوجه إلى المواجهة الشريفة ← السلام على النبي ﷺ ← السلام على أبي بكر ← السلام على عمر ← الانصراف بهدوء.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>السكينة قبل الترتيب</h3>
+            <p>لا يلزم أن تكون الزيارة بترتيب حرفي في كل حالة؛ فالمحافظة على الصلاة والخشوع وعدم إيذاء الناس مقدَّمة على تحقيق صورة شكلية للزيارة.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">دليل القاصد</span>
+        <p>دليل علمي وعملي متكامل للقاصد إلى المسجد النبوي. نُقلت مادته من المصادر المعتمدة، وروعي فيه التيسير والخشوع واحترام حقوق القاصدين.</p>
+      </div>
+      <nav class="footer-links" aria-label="روابط الأقسام">
+        <h3>أقسام الدليل</h3>
+        <ul>
+          <li><a href="visit-mosque.html">زيارة المسجد النبوي والصلاة فيه</a></li>
+          <li><a href="greeting.html">السلام على النبي ﷺ</a></li>
+          <li><a href="rawdah.html">الصلاة في الروضة الشريفة</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span data-year>2026</span> دليل القاصد — محتوى تعبّدي ودعوي.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" data-to-top aria-label="العودة إلى أعلى الصفحة">
+    <span class="arrow" aria-hidden="true">↑</span>
+    <span>للأعلى</span>
+  </button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
