@@ -1,24 +1,29 @@
 /**
  * عامل خدمة دليل القاصد — دعم العمل دون اتصال
- * مبني باستخدام Workbox عبر CDN (لا يحتاج إلى خطوة بناء).
+ * مبني باستخدام Workbox (مستضاف محليًا داخل المشروع، دون أي اعتماد
+ * على شبكة CDN خارجية، ليظل عامل الخدمة يعمل دائمًا).
  *
  * الاستراتيجيات:
- *  • الشبكة أولاً (NetworkFirst) لطلبات التنقل (الصفحات).
- *  • التخزين أولاً (CacheFirst) للملفات الثابتة ذات الأسماء المتغيرة
- *    (المخزنة المؤقتة بإضافة إصدار إلى الرابط).
- *  • استثناء مسارات تسجيل الدخول وروابط OAuth من التخزين المؤقت.
+ *   • الشبكة أولاً (NetworkFirst) لطلبات التنقل (الصفحات).
+ *   • التخزين أولاً (CacheFirst) للملفات الثابتة ذات الأسماء المتغيرة.
+ *   • استثناء مسارات تسجيل الدخول وروابط OAuth من التخزين المؤقت.
  */
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/6.6.1/workbox-sw.js");
+importScripts(
+  "assets/js/workbox/workbox-core.prod.js",
+  "assets/js/workbox/workbox-routing.prod.js",
+  "assets/js/workbox/workbox-strategies.prod.js",
+  "assets/js/workbox/workbox-expiration.prod.js",
+  "assets/js/workbox/workbox-cacheable-response.prod.js"
+);
 
 if (workbox) {
+  /* تفعيل فوري والسيطرة على الصفحات المفتوحة حالًا */
   workbox.core.setCacheNameDetails({
     prefix: "daleelalqasid",
     suffix: "v1"
   });
-
-  /* تفعيل فوري والسيطرة على الصفحات المفتوحة حالاً */
-  workbox.skipWaiting();
-  workbox.clientsClaim();
+  workbox.core.skipWaiting();
+  workbox.core.clientsClaim();
 
   /* ---------- مسارات وروابط مستثناة (تسجيل الدخول وOAuth) ---------- */
   var EXCLUDED = [
