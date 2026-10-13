@@ -143,6 +143,27 @@
     if (y) { y.textContent = new Date().getFullYear(); }
   }
 
+  /* ---------- تسجيل عامل الخدمة (دعم العمل دون اتصال) ----------
+     لا يُسجَّل في بيئة التطوير ولا داخل إطار المعاينة، ولا إلا عبر HTTPS. */
+  function initSW() {
+    if (!("serviceWorker" in navigator)) return;
+    var loc = window.location;
+    if (loc.protocol !== "https:") return;                       // بروتوكول آمن فقط
+    if (window.top !== window.self) return;                      // ليس داخل إطار معاينة
+    var host = loc.hostname;
+    if (host === "localhost" || host === "127.0.0.1" || host === "") return; // ليس بيئة تطوير
+    window.addEventListener("load", function () {
+      navigator.serviceWorker
+        .register("sw.js")
+        .then(function (reg) {
+          console.log("[PWA] تم تسجيل عامل الخدمة في:", reg.scope);
+        })
+        .catch(function (err) {
+          console.warn("[PWA] تعذّر تسجيل عامل الخدمة:", err);
+        });
+    });
+  }
+
   /* ---------- التشغيل ---------- */
   function init() {
     initTheme();
@@ -152,6 +173,7 @@
     initReveal();
     initLazyFade();
     initYear();
+    initSW();
   }
 
   if (document.readyState === "loading") {

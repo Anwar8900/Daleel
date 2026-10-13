@@ -1,0 +1,35 @@
+{
+  "name": "دليل القاصد",
+  "short_name": "دليل القاصد",
+  "description": "دليل الزيارة والسلام على النبي ﷺ والصلاة في الروضة الشريفة.",
+  "id": "/",
+  "start_url": ".",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "background_color": "#EAF5EC",
+  "theme_color": "#4C9A6A",
+  "categories": ["travel", "education", "religion"],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
