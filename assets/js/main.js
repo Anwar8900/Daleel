@@ -164,6 +164,95 @@
     });
   }
 
+  /* ---------- تثبيت التطبيق (PWA) ---------- */
+  function isIOSDevice() {
+    var ua = navigator.userAgent || "";
+    if (/iphone|ipad|ipod/i.test(ua)) return true;
+    try {
+      if (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) return true;
+    } catch (e) { /* تجاهل */ }
+    return false;
+  }
+
+  function showIOSInstructions() {
+    var old = document.querySelector(".install-modal");
+    if (old) { old.remove(); }
+
+    var modal = document.createElement("div");
+    modal.className = "install-modal";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-label", "تعليمات تثبيت التطبيق على آيفون");
+    modal.innerHTML =
+      '<div class="install-modal__backdrop" data-install-close></div>' +
+      '<div class="install-modal__card">' +
+        '<button class="install-modal__close" type="button" data-install-close aria-label="إغلاق">' +
+          '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>' +
+        '</button>' +
+        '<h3 class="install-modal__title">تثبيت التطبيق على آيفون</h3>' +
+        '<ol class="install-modal__steps">' +
+          '<li>اضغط زر <b>المشاركة</b> (مربّع بسهم لأعلى) في شريط المتصفح.</li>' +
+          '<li>مرّر للأسفل واختر <b>«أضِف إلى شاشة الأدوات»</b>.</li>' +
+          '<li>اضغط <b>«أضِف»</b> في الأعلى.</li>' +
+        '</ol>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("[data-install-close]")) {
+        modal.remove();
+      }
+    });
+
+    function onKey(e) {
+      if (e.key === "Escape") {
+        modal.remove();
+        document.removeEventListener("keydown", onKey);
+      }
+    }
+    document.addEventListener("keydown", onKey);
+  }
+
+  function initInstall() {
+    var btn = document.querySelector("[data-install]");
+    if (!btn) return;
+
+    var deferredPrompt = null;
+    var ios = isIOSDevice();
+
+    function reveal() {
+      btn.hidden = false;
+    }
+
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      reveal();
+    });
+
+    /* على iOS لا ينطلق beforeinstallprompt — نُظهر الزر لتقديم التعليمات */
+    if (ios) { reveal(); }
+
+    btn.addEventListener("click", function () {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function (choice) {
+          if (choice && choice.outcome === "accepted") {
+            btn.hidden = true;
+          }
+          deferredPrompt = null;
+        });
+      } else if (ios) {
+        showIOSInstructions();
+      }
+    });
+
+    window.addEventListener("appinstalled", function () {
+      btn.hidden = true;
+      deferredPrompt = null;
+    });
+  }
+
   /* ---------- التشغيل ---------- */
   function init() {
     initTheme();
@@ -174,6 +263,7 @@
     initLazyFade();
     initYear();
     initSW();
+    initInstall();
   }
 
   if (document.readyState === "loading") {
